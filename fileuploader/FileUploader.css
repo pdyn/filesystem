@@ -1,0 +1,23 @@
+input[type="file"].UploadButton {
+	display: none;
+}
+
+.uploaddragdrop.active {
+	outline: 1px solid #66afe9 !important;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.UploadButton {
+	position: relative;
+	cursor: pointer;
+}
+
+.UploadButton label {
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}

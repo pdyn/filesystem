@@ -33,6 +33,48 @@ class Mimetype {
 	}
 
 	/**
+	 * Convert a file MIME type into a more general media type.
+	 *
+	 * @param string $mime A mime type.
+	 * @return string A media type. "image", "audio", "video" or "other"
+	 */
+	public static function mimetype2mediatype($mime) {
+		$file_main_type = explode('/', $mime);
+		switch ($file_main_type[0]) {
+			case 'image':
+				return 'image';
+
+			case 'audio':
+				return 'audio';
+
+			case 'video':
+				return 'video';
+
+			case 'text':
+				return 'text';
+
+			default:
+				switch ($mime) {
+					case 'application/ogg':
+						return 'audio';
+					default:
+						return 'other';
+				}
+				break;
+		}
+	}
+
+	public static function get_mediatype($mime, $filename = '') {
+		$mediatype = static::mimetype2mediatype($mime);
+		if ($mediatype === 'other' && !empty($filename)) {
+			$ext = \pdyn\filesystem\FilesystemUtils::get_ext($filename);
+			$mimefromext = \pdyn\filesystem\Mimetype::ext2mime($ext);
+			$mediatype = static::mimetype2mediatype($mimefromext);
+		}
+		return $mediatype;
+	}
+
+	/**
 	 * Get a map of extensions to mime types.
 	 *
 	 * @return array Array of mimetypes indexed by their extension.

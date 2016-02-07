@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php" colors="false">
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">.</directory>
+			<exclude>
+				<directory suffix=".php">vendor/</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+	</logging>
+</phpunit>

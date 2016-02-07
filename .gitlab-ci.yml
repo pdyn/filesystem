@@ -1,0 +1,11 @@
+cache:
+  paths:
+  - vendor/
+
+before_script:
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install
+
+test:app:
+  script:
+    - vendor/bin/phpunit tests/

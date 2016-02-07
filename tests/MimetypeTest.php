@@ -27,6 +27,7 @@ namespace pdyn\filesystem\tests;
  *
  * @group pdyn
  * @group pdyn_filesystem
+ * @codeCoverageIgnore
  */
 class MimetypeTest extends \PHPUnit_Framework_TestCase {
 

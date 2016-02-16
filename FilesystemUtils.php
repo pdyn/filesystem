@@ -100,13 +100,13 @@ class FilesystemUtils {
 	 * @param boolean $allow_subdirs Whether to allow forward directory traversal (i.e. subdirectories).
 	 * @return string The sanitized string.
 	 */
-	public static function sanitize_filename($i, $allow_subdirs = false) {
+	public static function sanitize_filename($i, $allow_subdirs = false, $allowabsolute = false) {
 		$i = trim($i);
 		$replacements = ['../', './'];
 		if ($allow_subdirs === false) {
 			$replacements[] = '/';
 		}
-		if ($i{0} === '/') {
+		if ($allowabsolute !== true && $i{0} === '/') {
 			$i = substr($i, 1);
 		}
 		return str_replace($replacements, '', $i);
